@@ -346,7 +346,7 @@ Creates and returns a new spot.
         "fats": 12,
         "carbs": 33,
         "sugar": 1,
-        "previewImage": "https://www.pexels.com/photo/water-drop-40784/"
+        "previewImage": "https://www.pexels.com/photo/water-drop-40784/",
     }
     ```
 
