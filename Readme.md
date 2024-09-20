@@ -236,8 +236,8 @@ user's information.
     ```
 
 ## FoodFacts
-  Returns all the FoodFacts.
 
+###  Returns all the FoodFacts.
 * Require Authentication: false
 * Request
   * Method: GET
@@ -265,7 +265,12 @@ user's information.
           "fats": 12,
           "carbs": 33,
           "sugar": 1,
-          "previewImage": "https://www.pexels.com/photo/water-drop-40784/",
+          "Icon": {
+            "id": 1,
+            "name": "chicken",
+            "url": "image.google.com" 
+          },
+          "description":  "This is a description",
           "createdAt": "2021-11-19 20:39:36",
           "updatedAt": "2021-11-19 20:39:36",
         }
@@ -304,7 +309,13 @@ Returns the details of a spot specified by its id.
         "fats": 12,
         "carbs": 33,
         "sugar": 1,
-        "previewImage": "https://www.pexels.com/photo/water-drop-40784/",
+        "description":  "This is a description",
+        "Icon": 
+            {
+                "id": 1,
+                "name": "chicken",
+                "url": "image.google.com" 
+            },
         "createdAt": "2021-11-19 20:39:36",
         "updatedAt": "2021-11-19 20:39:36",
     }
@@ -346,7 +357,6 @@ Creates and returns a new spot.
         "fats": 12,
         "carbs": 33,
         "sugar": 1,
-        "previewImage": "https://www.pexels.com/photo/water-drop-40784/",
     }
     ```
 
@@ -365,35 +375,6 @@ Creates and returns a new spot.
         "servingSize": "'servingsize' is required",
         "servingUnit": "'servingunit' is required", 
       }
-    }
-    ```
-
-### Edit a FoodFact
-
-Updates and returns an existing spot.
-
-* Require Authentication: true
-* Require proper authorization: Spot must belong to the current user
-* Request
-  * Method: PUT
-  * URL: /api/foodfact/:foodfactId
-  * Headers:
-    * Content-Type: application/json
-  * Body:
-
-    ```json
-    {
-        "name": "Big Mac",
-        "calories": 500,
-        "servingSize": 12,
-        "servingUnit": "oz", 
-        "servingCount": null,
-        "company": "McDonalds",
-        "protein": 55,
-        "fats": 12,
-        "carbs": 33,
-        "sugar": 1,
-        "previewImage": "https://www.pexels.com/photo/water-drop-40784/",
     }
     ```
 
@@ -416,9 +397,65 @@ Updates and returns an existing spot.
         "fats": 12,
         "carbs": 33,
         "sugar": 1,
-        "previewImage": "https://www.pexels.com/photo/water-drop-40784/",
-        "createdAt": "2021-11-19 20:39:36",
-        "updatedAt": "2021-11-19 20:39:36",
+        "description":  "This is a description"
+    }
+
+### Edit a FoodFact
+
+Updates and returns an existing spot.
+
+* Require Authentication: true
+* Require proper authorization: Spot must belong to the current user
+* Request
+  * Method: PUT
+  * URL: /api/foodfact/:foodfactId
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "name": "Big Mac",
+        "calories": 500,
+        "servingSize": 12,
+        "servingUnit": "oz", 
+        "servingCount": null,
+        "company": "McDonalds",
+        "protein": 55,
+        "fats": 12,
+        "carbs": 33,
+        "sugar": 1,
+        "description":  "This is a description",
+    }
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "name": "Big Mac",
+        "calories": 500,
+        "servingSize": 12,
+        "servingUnit": "oz", 
+        "servingCount": null,
+        "company": "McDonalds",
+        "protein": 55,
+        "fats": 12,
+        "carbs": 33,
+        "sugar": 1,
+        "description":  "This is a description",
+        "Icon": 
+            {
+                "id": 1,
+                "name": "chicken",
+                "url": "image.google.com" 
+            },
     }
     ```
 
@@ -489,7 +526,8 @@ Deletes an existing spot.
 
 
 ## Excercises
-  Returns all the Excercises.
+
+### Returns all the Excercises.
 
 * Require Authentication: false
 * Request
@@ -511,10 +549,15 @@ Deletes an existing spot.
           "name": "Walking",
           "calories": 500,
           "count": 120,
-          "counterUnit": "minutes", 
+          "unit": "minutes", 
           "timestamp": null,
-          "createdAt": "2021-11-19 20:39:36",
-          "updatedAt": "2021-11-19 20:39:36",
+          "description": "text",
+          "Icon": 
+            {
+                "id": 1,
+                "name": "chicken",
+                "url": "image.google.com" 
+            }
         }
       ]
     }
@@ -544,10 +587,15 @@ Returns the details of a Excercise specified by its id.
         "name": "Walking",
         "calories": 500,
         "count": 120,
-        "counterUnit": "minutes", 
+        "unit": "minutes", 
         "timestamp": null,
-        "createdAt": "2021-11-19 20:39:36",
-        "updatedAt": "2021-11-19 20:39:36",
+        "description": "text",
+        "Icon": 
+        {
+            "id": 1,
+            "name": "chicken",
+            "url": "image.google.com" 
+        }
     }
     ```
 
@@ -577,7 +625,7 @@ Creates and returns a new Excercise.
 
     ```json
     {
-        "name": "Walking",
+        "name": "Walking"
     }
     ```
 
@@ -604,7 +652,7 @@ Updates and returns an existing spot.
 * Require proper authorization: Spot must belong to the current user
 * Request
   * Method: PUT
-  * URL: /api/foodfact/:foodfactId
+  * URL: /api/excercises/:excerciseId
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -612,6 +660,11 @@ Updates and returns an existing spot.
     ```json
     {
         "name": "Walking",
+        "calories": 200,
+        "count": 60,
+        "unit": "minutes",
+        "description": "this ia my description",
+        "timestamp": "2021-11-19 20:39:36"
     }
     ```
 
@@ -625,7 +678,11 @@ Updates and returns an existing spot.
     {
         "id": 1,
         "name": "Walking",
-        "calories": 500,
+        "calories": 200,
+        "count": 60,
+        "unit": "minutes",
+        "description": "this ia my description",
+        "timestamp": "2021-11-19 20:39:36",
         "createdAt": "2021-11-19 20:39:36",
         "updatedAt": "2021-11-19 20:39:36",
     }
@@ -690,5 +747,501 @@ Deletes an existing excercise.
     ```json
     {
       "message": "Excercise couldn't be found"
+    }
+    ```
+
+## DayLogs
+
+###  Returns all the DayLogs.
+
+* Require Authentication: false
+* Request
+  * Method: GET
+  * URL: /api/daylogs
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    "Daylogs": [
+    {
+        "id": 1,
+        "day": "2021-11-19 20:39:36",
+        "description": "My description",
+        "Recipes":[
+        {
+            "id": 1,
+            "recipeId": 3,
+            "excerciseId": 1,
+            "userId": 2,
+            "description": "This is a description",
+            "Icon": 
+                {
+                    "id": 1,
+                    "name": "chicken",
+                    "url": "image.google.com" 
+                },
+            "createdAt": "2021-11-19 20:39:36",
+            "updatedAt": "2021-11-19 20:39:36"
+        }],
+        "Excercises":[
+        {
+            "id": 1,
+            "name": "Walking",
+            "iconId": 4,
+            "calories": 500,
+            "count": 120,
+            "counterUnit": "minutes", 
+            "timestamp": null,
+            "createdAt": "2021-11-19 20:39:36",
+            "updatedAt": "2021-11-19 20:39:36",
+        }],
+        "user": {
+            "id": 1,
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@gmail.com",
+            "username": "JohnSmith"
+        }
+    }
+    ]
+    ```
+
+
+
+### Get details of a DayLog from an id
+
+Returns the details of a spot specified by its id.
+
+* Require Authentication: false
+* Request
+  * Method: GET
+  * URL: /api/daylogs/:daylogsId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "day": "2021-11-19 20:39:36",
+        "description": "My description",
+        "Recipes":[
+        {
+            "id": 1,
+            "recipeId": 3,
+            "excerciseId": 1,
+            "userId": 2,
+            "description": "This is a description",
+            "Icon": 
+                {
+                    "id": 1,
+                    "name": "chicken",
+                    "url": "image.google.com" 
+                },
+            "createdAt": "2021-11-19 20:39:36",
+            "updatedAt": "2021-11-19 20:39:36"
+        }],
+        "Excercises":[
+        {
+            "id": 1,
+            "name": "Walking",
+            "iconId": 4,
+            "calories": 500,
+            "count": 120,
+            "counterUnit": "minutes", 
+            "timestamp": null,
+            "createdAt": "2021-11-19 20:39:36",
+            "updatedAt": "2021-11-19 20:39:36",
+        }],
+        "user": {
+            "id": 1,
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@gmail.com",
+            "username": "JohnSmith"
+        }
+    }
+    ```
+
+* Error response: Couldn't find a Spot with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "FoodFact couldn't be found"
+    }
+    ```
+
+### Create a DayLog
+
+Creates and returns a new spot.
+
+* Require Authentication: true
+* Request
+  * Method: POST
+  * URL: /api/daylogs
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "foodFactId": 3,
+        "userId": 1,
+        "iconId": 12,
+        "description": "This is a description"
+    }
+    ```
+
+* Error Response: Body validation error
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Bad Request", // (or "Validation error" if generated by Sequelize),
+      "errors": {
+        "name": "name is required",
+        "calories": "'calories' is required",
+        "servingSize": "'servingsize' is required",
+        "servingUnit": "'servingunit' is required", 
+      }
+    }
+    ```
+
+### Edit a Recipe
+
+Updates and returns an existing spot.
+
+* Require Authentication: true
+* Require proper authorization: Spot must belong to the current user
+* Request
+  * Method: PUT
+  * URL: /api/foodfact/:foodfactId
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "foodFactId": 3,
+        "userId": 1,
+        "iconId": 12,
+        "description": "This is a description",
+    }
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "foodFactId": 3,
+        "userId": 1,
+        "iconId": 12,
+        "description": "This is a description",
+    }
+    ```
+
+* Error Response: Body validation error
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Bad Request", // (or "Validation error" if generated by Sequelize),
+      "errors": {
+        "name": "name is required",
+        "calories": "'calories' is required",
+        "servingSize": "'servingsize' is required",
+        "servingUnit": "'servingunit' is required", 
+      }
+    }
+    ```
+
+* Error response: Couldn't find a Spot with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Recipe couldn't be found"
+    }
+    ```
+
+### Delete a Recipe
+
+Deletes an existing recipe.
+
+* Require Authentication: true
+* Require proper authorization: Spot must belong to the current user
+* Request
+  * Method: DELETE
+  * URL: /api/recipes/:recipeId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Successfully deleted"
+    }
+    ```
+
+* Error response: Couldn't find a Spot with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Recipe couldn't be found"
+    }
+    ```
+
+
+## Recipes
+  Returns all the FoodFacts.
+
+* Require Authentication: false
+* Request
+  * Method: GET
+  * URL: /api/recipes
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "Recipes": [
+        {
+          "id": 1,
+          "foodFactId": 3,
+          "userId": 1,
+          "iconId": 12,
+          "description": "This is a description",
+          "createdAt": "2021-11-19 20:39:36",
+          "updatedAt": "2021-11-19 20:39:36"
+        }
+      ]
+    }
+    ```
+
+
+
+### Get details of a Recipe from an id
+
+Returns the details of a spot specified by its id.
+
+* Require Authentication: false
+* Request
+  * Method: GET
+  * URL: /api/recipes/:recipeId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "foodFactId": 3,
+        "userId": 1,
+        "iconId": 12,
+        "description": "This is a description",
+        "createdAt": "2021-11-19 20:39:36",
+        "updatedAt": "2021-11-19 20:39:36"
+    }
+    ```
+
+* Error response: Couldn't find a Spot with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "FoodFact couldn't be found"
+    }
+    ```
+
+### Create a Recipe
+
+Creates and returns a new spot.
+
+* Require Authentication: true
+* Request
+  * Method: POST
+  * URL: /api/recipe
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "foodFactId": 3,
+        "userId": 1,
+        "iconId": 12,
+        "description": "This is a description"
+    }
+    ```
+
+* Error Response: Body validation error
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Bad Request", // (or "Validation error" if generated by Sequelize),
+      "errors": {
+        "name": "name is required",
+        "calories": "'calories' is required",
+        "servingSize": "'servingsize' is required",
+        "servingUnit": "'servingunit' is required", 
+      }
+    }
+    ```
+
+### Edit a Recipe
+
+Updates and returns an existing spot.
+
+* Require Authentication: true
+* Require proper authorization: Spot must belong to the current user
+* Request
+  * Method: PUT
+  * URL: /api/foodfact/:foodfactId
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "foodFactId": 3,
+        "userId": 1,
+        "iconId": 12,
+        "description": "This is a description",
+    }
+    ```
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+        "id": 1,
+        "foodFactId": 3,
+        "userId": 1,
+        "iconId": 12,
+        "description": "This is a description",
+    }
+    ```
+
+* Error Response: Body validation error
+  * Status Code: 400
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Bad Request", // (or "Validation error" if generated by Sequelize),
+      "errors": {
+        "name": "name is required",
+        "calories": "'calories' is required",
+        "servingSize": "'servingsize' is required",
+        "servingUnit": "'servingunit' is required", 
+      }
+    }
+    ```
+
+* Error response: Couldn't find a Spot with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Recipe couldn't be found"
+    }
+    ```
+
+### Delete a Recipe
+
+Deletes an existing recipe.
+
+* Require Authentication: true
+* Require proper authorization: Spot must belong to the current user
+* Request
+  * Method: DELETE
+  * URL: /api/recipes/:recipeId
+  * Body: none
+
+* Successful Response
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Successfully deleted"
+    }
+    ```
+
+* Error response: Couldn't find a Spot with the specified id
+  * Status Code: 404
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+    ```json
+    {
+      "message": "Recipe couldn't be found"
     }
     ```
